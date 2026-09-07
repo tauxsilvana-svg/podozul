@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Induswork Podología</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,500;8..30,600;8..30,700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+  :root {
+    --paper: #f1f4f1;
+    --paper-raised: #ffffff;
+    --ink: #1b2420;
+    --ink-soft: #4a5850;
+    --accent: #1f5c50;
+    --accent-soft: #dce8e1;
+    --clay: #a85f2b;
+    --clay-soft: #f1e2d2;
+    --line: #d6dcd6;
+    --bubble: #eef3ee;
+    --bubble-ink: #1b2420;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #121815;
+      --paper-raised: #182019;
+      --ink: #e9eeea;
+      --ink-soft: #a9b6ae;
+      --accent: #74c0aa;
+      --accent-soft: #1d2d28;
+      --clay: #e0985e;
+      --clay-soft: #2c2119;
+      --line: #2a332e;
+      --bubble: #1c2521;
+      --bubble-ink: #e9eeea;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #121815;
+    --paper-raised: #182019;
+    --ink: #e9eeea;
+    --ink-soft: #a9b6ae;
+    --accent: #74c0aa;
+    --accent-soft: #1d2d28;
+    --clay: #e0985e;
+    --clay-soft: #2c2119;
+    --line: #2a332e;
+    --bubble: #1c2521;
+    --bubble-ink: #e9eeea;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 6rem;
+  }
+
+  /* Masthead */
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .masthead h1 {
+    font-family: 'Piazzolla', Georgia, serif;
+    font-weight: 700;
+    font-size: 2.6rem;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .masthead p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 46ch;
+  }
+
+  /* Sections */
+  .section {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 0.25rem 1.25rem;
+    padding: 2.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .section:first-of-type { border-top: 1px solid var(--line); }
+
+  .section-index {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    padding-top: 0.35rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .section h2 {
+    grid-column: 2;
+    font-family: 'Piazzolla', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    margin: 0 0 0.5rem;
+    color: var(--accent);
+    text-wrap: balance;
+  }
+
+  .section p {
+    grid-column: 2;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  /* FAQ */
+  .faq-block {
+    padding: 2.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-block > .eyebrow-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .faq-block h2 {
+    font-family: 'Piazzolla', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .faq-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .faq-list li {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 0.15rem 1.25rem;
+  }
+
+  .faq-q {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--clay);
+    padding-top: 0.2rem;
+  }
+
+  .faq-list p {
+    margin: 0;
+    max-width: 60ch;
+  }
+
+  /* Share block */
+  .share {
+    margin-top: 3rem;
+    padding-top: 2.1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .share > .eyebrow { margin-bottom: 1.4rem; display: block; }
+
+  .phone {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 1.5rem 1.5rem 1.75rem;
+    max-width: 480px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .phone + .phone { margin-top: 1.25rem; }
+
+  .phone-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.9rem;
+  }
+
+  .bubble {
+    background: var(--bubble);
+    color: var(--bubble-ink);
+    border-radius: 4px 14px 14px 14px;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.98rem;
+    max-width: 100%;
+  }
+
+  .bubble.short {
+    border-radius: 14px;
+    font-family: 'Piazzolla', Georgia, serif;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    .section, .faq-list li { grid-template-columns: 1fr; }
+    .section-index, .faq-q { display: none; }
+    .page { padding: 3rem 1.25rem 4rem; }
+    .masthead h1 { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="masthead">
+    <span class="eyebrow">Presentación de servicio · Consultorios de podología</span>
+    <h1>Induswork</h1>
+    <p>Atención por WhatsApp y agenda con recordatorios, pensados para que un consultorio de podología no pierda ni turnos ni consultas.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-index">01</div>
+    <h2>Quién soy</h2>
+    <p>Soy Induswork. Ayudo a profesionales y negocios de servicios a dejar de perder tiempo y turnos por atención manual: pongo la tecnología, vos seguís atendiendo a tu manera.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-index">02</div>
+    <h2>A quién ayudo</h2>
+    <p>Consultorios de podología que atienden por WhatsApp y manejan turnos, pero no dan abasto para responder rápido ni para hacer seguimiento de quién viene y quién no.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-index">03</div>
+    <h2>Qué problema les saco</h2>
+    <p>Dos problemas que van juntos: mensajes de WhatsApp sin responder, o respondidos tarde, siempre con las mismas preguntas de horario y atención a domicilio, y turnos que se pierden porque el paciente se olvida o no avisa que falta. Las dos cosas juntas son plata que se va todos los meses.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-index">04</div>
+    <h2>Qué les entrego</h2>
+    <p>Un asistente de WhatsApp que responde automático las consultas de siempre (horarios, atención a domicilio, disponibilidad) y deriva al consultorio solo lo que necesita trato personal, más un sistema de agenda que manda recordatorios automáticos antes de cada turno para bajar las ausencias.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-index">05</div>
+    <h2>En cuánto tiempo</h2>
+    <p>Lo dejo funcionando en un plazo corto, pensado para que en la primera o segunda semana ya esté respondiendo y recordando turnos solo, sin que el consultorio tenga que parar ni cambiar su forma de trabajar.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-index">06</div>
+    <h2>Qué tiene que poner el cliente</h2>
+    <p>El número de WhatsApp del consultorio, las respuestas típicas que ya usa (horarios, atención a domicilio, políticas), y acceso a cómo maneja hoy los turnos (agenda en papel, Excel, cuaderno, lo que sea) para poder ordenarlo.</p>
+  </div>
+
+  <div class="faq-block">
+    <div class="eyebrow-row">
+      <span class="section-index">07</span>
+      <h2>Las 6 preguntas que me van a hacer antes de contratarme</h2>
+    </div>
+    <ul class="faq-list">
+      <li><span class="faq-q">P1</span><p>¿Esto reemplaza a la persona que atiende, o la ayuda?</p></li>
+      <li><span class="faq-q">P2</span><p>¿Qué pasa si el paciente pregunta algo que el sistema no sabe responder?</p></li>
+      <li><span class="faq-q">P3</span><p>¿Puedo revisar o cambiar las respuestas después de que esté funcionando?</p></li>
+      <li><span class="faq-q">P4</span><p>¿Necesito saber de tecnología para usarlo día a día?</p></li>
+      <li><span class="faq-q">P5</span><p>¿Qué pasa con los datos de mis pacientes, quedan seguros?</p></li>
+      <li><span class="faq-q">P6</span><p>¿Si no me sirve, puedo dar de baja sin quedar atado?</p></li>
+    </ul>
+  </div>
+
+  <div class="share">
+    <span class="eyebrow">Para compartir</span>
+
+    <div class="phone">
+      <p class="phone-label">Mensaje para WhatsApp / redes</p>
+      <div class="bubble">Cada turno vacío en un consultorio de podología representa tiempo y recursos no recuperables. Induswork ofrece un sistema de atención automática por WhatsApp que responde las consultas frecuentes (horarios, atención a domicilio, disponibilidad) y envía recordatorios previos a cada turno, para reducir las ausencias y ordenar la comunicación con el paciente, sin modificar su forma actual de trabajo ni requerir conocimientos técnicos de su parte. Puesta en marcha en pocas semanas.</div>
+    </div>
+
+    <div class="phone">
+      <p class="phone-label">Bio / firma</p>
+      <div class="bubble short">Induswork — Atención automática por WhatsApp y recordatorios de turno para consultorios de podología.</div>
+    </div>
+  </div>
+
+  <footer>
+    Oferta elegida: WhatsApp de atención + Agenda con recordatorios · Especialización: consultorios de podología
+  </footer>
+
+</div>
+</body>
+</html>
